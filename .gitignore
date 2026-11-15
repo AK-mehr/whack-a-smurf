@@ -4,3 +4,5 @@ SAML-D.parquet
 account_ids.npy
 .ipynb_checkpoints/
 __pycache__/
+strategic_detector/outputs/
+.pytest_cache/
