@@ -9,7 +9,6 @@ from .config import DEFAULT_PARQUET_PATH
 
 
 def load_transactions(parquet_path: Path = DEFAULT_PARQUET_PATH) -> pd.DataFrame:
-    """Load the cached SAML-D table built by the notebook's own setup cells."""
     df = pd.read_parquet(parquet_path)
     if "day" not in df.columns:
         df["day"] = (
