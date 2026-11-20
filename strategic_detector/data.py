@@ -18,8 +18,6 @@ def load_transactions(parquet_path: Path = DEFAULT_PARQUET_PATH) -> pd.DataFrame
 
 
 def distinct_receivers(df: pd.DataFrame, window_days: int) -> np.ndarray:
-    """Distinct receivers of each sender within each window_days-day window, repeated on
-    every payment that falls in it. Ported from the notebook's `distinct_receivers` helper."""
     key = pd.DataFrame(
         {
             "s": df["Sender_account"].to_numpy(),
