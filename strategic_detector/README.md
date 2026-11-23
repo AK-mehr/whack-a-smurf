@@ -4,15 +4,15 @@ Implements the detector-design logic of Yang, Yao & Zhou (2026, *Management Scie
 "Strategic Disinformation Generation and Detection") on top of `SAML-D.csv`, translated
 from their sender/receiver/detector game into AML transaction monitoring:
 
-| paper | this project |
-|---|---|
-| sender's type H / L | transaction is legitimate / is laundering |
-| message m_H ("I'm legitimate") | every laundering transaction tries to look legitimate (no AML analog of self-flagging, so only the m_H branch of the model applies) |
-| classifier signal s | `Amount` (Control A) or distinct-receiver-count in a window (Control B) |
-| alarm rule / detector {beta, alpha} | a threshold on that signal; beta = Pr(flag \| laundering), alpha = Pr(flag \| legitimate) |
-| designer | the compliance team choosing the threshold |
-| lying cost C | cost to a launderer of restructuring to mimic a legitimate pattern |
-| Delta^S_L, Delta^R_H, Delta^R_L, Delta^S_H | payoffs you have to choose (see `scenario.ILLUSTRATIVE_PARAMS`) |
+| paper                                      | this project                                                                                                                        |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| sender's type H / L                        | transaction is legitimate / is laundering                                                                                           |
+| message m_H ("I'm legitimate")             | every laundering transaction tries to look legitimate (no AML analog of self-flagging, so only the m_H branch of the model applies) |
+| classifier signal s                        | `Amount` (Control A) or distinct-receiver-count in a window (Control B)                                                             |
+| alarm rule / detector {beta, alpha}        | a threshold on that signal; beta = Pr(flag \| laundering), alpha = Pr(flag \| legitimate)                                           |
+| designer                                   | the compliance team choosing the threshold                                                                                          |
+| lying cost C                               | cost to a launderer of restructuring to mimic a legitimate pattern                                                                  |
+| Delta^S_L, Delta^R_H, Delta^R_L, Delta^S_H | payoffs you have to choose (see `scenario.ILLUSTRATIVE_PARAMS`)                                                                     |
 
 ## Structure
 
