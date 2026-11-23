@@ -15,9 +15,12 @@ def designer_objective(
     weight_high_type: float = 0.0,
     weight_low_type: float = 0.0,
 ) -> np.ndarray:
-    """J(beta, alpha) = weight_receiver * EU^R + weight_high_type * rho * EU^S_H
+    """
+    - Turns everyone's payoffs into one score, J
+    - J(beta, alpha) = weight_receiver * EU^R + weight_high_type * rho * EU^S_H
     + weight_low_type * (1 - rho) * EU^S_L (Lemma 6). Defaults to maximizing the
-    receiver's (bank's) payoff alone, i.e. Proposition 3's objective."""
+    receiver's (bank's) payoff alone, i.e. Proposition 3's objective.
+    """
     payoffs = equilibrium_payoffs(beta, alpha, p)
     return (
         weight_receiver * payoffs["receiver"]
@@ -27,7 +30,9 @@ def designer_objective(
 
 
 def optimal_point(roc: pd.DataFrame, p: EconomicParams, **weights: float) -> pd.Series:
-    """Pick the (threshold, alpha, beta) row of an ROC curve that maximizes the
+    """
+    - Scores every threshold on an ROC curve and returns the best one.
+    - Pick the (threshold, alpha, beta) row of an ROC curve that maximizes the
     designer's objective, restricted to the paper's interesting region 0 < alpha < beta
     (an uninformative or perverse operating point is never optimal; Section 4.1).
 
